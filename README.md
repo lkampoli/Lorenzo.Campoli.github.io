@@ -1,3 +1,5 @@
+Hello, my name is Lorenzo Campoli and I'm currently working at [The University of Melbourne](https://mechanical.eng.unimelb.edu.au/) on data driven turbulence modeling.
+<!-- 
 # Hi there! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px">
 
 ## 🚀 About Me
@@ -13,7 +15,7 @@
     <br />
     <img src="https://visitor-badge.laobi.icu/badge?page_id=lkampoli.lkampoli" alt="visitors">
 </div>
-
+--> 
 ## 🔗 Links
 
 [![linked-in](https://img.shields.io/badge/Linked_In-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/lorenzo-campoli-325299191/)
