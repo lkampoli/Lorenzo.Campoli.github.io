@@ -9,10 +9,75 @@
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    body { font-family: 'Helvetica', sans-serif; padding-top: 80px; }
+    body { font-family: 'Helvetica', sans-serif; padding-top: 80px; background-color: #fafafa; }
     .navbar { margin-bottom: 0; border-radius: 0; }
-    .section-title { font-family: 'Oswald', sans-serif; border-bottom: 2px solid #333; margin-bottom: 20px; padding-bottom: 5px; }
-    .resource-category { margin-bottom: 30px; }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      border-bottom: 2px solid #333;
+      margin-bottom: 20px;
+      padding-bottom: 5px;
+    }
+    .category-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background-color: #2c3e50;
+      padding: 6px 14px;
+      border-radius: 3px;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+    .resource-category { margin-bottom: 36px; }
+
+    /* Tag pill beside entry name */
+    .badge-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      border-radius: 3px;
+      padding: 2px 6px;
+      margin-left: 6px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-fortran  { background: #c0392b; color: #fff; }
+    .badge-python   { background: #2980b9; color: #fff; }
+    .badge-cpp      { background: #27ae60; color: #fff; }
+    .badge-julia    { background: #8e44ad; color: #fff; }
+    .badge-multi    { background: #e67e22; color: #fff; }
+    .badge-hpc      { background: #16a085; color: #fff; }
+    .badge-gpu      { background: #2ecc71; color: #222; }
+    .badge-ml       { background: #e74c3c; color: #fff; }
+    .badge-standard { background: #7f8c8d; color: #fff; }
+
+    ul.resource-list { list-style: none; padding-left: 0; }
+    ul.resource-list li {
+      border-left: 3px solid #dee2e6;
+      padding: 5px 0 5px 12px;
+      margin-bottom: 6px;
+      transition: border-color 0.2s;
+    }
+    ul.resource-list li:hover { border-left-color: #2c3e50; }
+    ul.resource-list li a { font-weight: 600; color: #1a5276; text-decoration: none; }
+    ul.resource-list li a:hover { text-decoration: underline; }
+    ul.resource-list li .desc { color: #555; font-size: 0.9rem; }
+
+    .toc-box {
+      background: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+    }
+    .toc-box h6 { font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; color: #888; margin-bottom: 10px; }
+    .toc-box a { color: #1a5276; text-decoration: none; font-size: 0.88rem; display: inline-block; margin-right: 14px; margin-bottom: 4px; }
+    .toc-box a:hover { text-decoration: underline; }
+
+    .section-intro { color: #555; margin-bottom: 28px; font-size: 0.95rem; }
+
+    footer { margin-top: 60px; padding: 20px; background-color: #f0f0f0; border-top: 1px solid #ddd; }
   </style>
 </head>
 <body>
@@ -27,55 +92,533 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="research.html">Research & Outreach</a></li>
+        <li class="nav-item"><a class="nav-link" href="research.html">Research &amp; Outreach</a></li>
         <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
         <li class="nav-item"><a class="nav-link" href="talks.html">Talks</a></li>
-        <li class="nav-item"><a class="nav-link active" href="resources.html">Resources</a></li> 
-        <li class="nav-item"><a class="nav-link" href="CV/CV.pdf">CV</a></li> 
+        <li class="nav-item"><a class="nav-link active" href="resources.html">Resources</a></li>
+        <li class="nav-item"><a class="nav-link" href="CV/CV.pdf">CV</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container">
+<div class="container" style="max-width: 980px;">
   <div class="row">
     <div class="col-md-12">
       <h2 class="section-title">Resources</h2>
-      <p>A curated list of software packages and tools I find useful for CFD, Machine Learning, and Scientific Computing.</p>
+      <p class="section-intro">
+        A curated collection of software packages, libraries, and tools I use or recommend across
+        CFD, hypersonic &amp; reacting flows, discontinuity fitting, machine learning for physics,
+        HPC, meshing, and scientific computing.
+      </p>
 
-      <div class="resource-category">
-        <h4>Libraries & Toolkits</h4>
-        <ul>
-          <li><a href="https://github.com/lkampoli/kappa" target="_blank">KAPPA</a> - Kinetic Approach to Physical Processes in Atmospheres</li>
-          <li><a href="https://cantera.org" target="_blank">Cantera</a> - Chemical kinetics, thermodynamics, and transport tools</li>
-          <li><a href="https://github.com/mutationpp/Mutationpp" target="_blank">Mutation++</a> - Multicomponent Thermodynamic And Transport library</li>
-          <li><a href="https://github.com/UnDiFi/UnDiFi-2D" target="_blank">UnDiFi-2D</a> - Unstructured Discontinuity Fitting code</li>
+      <!-- Table of Contents -->
+      <div class="toc-box">
+        <h6>Jump to section</h6>
+        <a href="#thermo-transport">Thermodynamics &amp; Transport</a>
+        <a href="#cfd-general">CFD Solvers — General</a>
+        <a href="#cfd-compressible">CFD Solvers — Compressible &amp; Hypersonic</a>
+        <a href="#cfd-spectral">Spectral, FEM &amp; PDE Frameworks</a>
+        <a href="#disc-fitting">Discontinuity Fitting</a>
+        <a href="#ml-physics">ML &amp; Physics-Informed Methods</a>
+        <a href="#scientific-computing">Scientific Computing Libraries</a>
+        <a href="#hpc-parallel">HPC &amp; Parallel Computing</a>
+        <a href="#meshing">Meshing</a>
+        <a href="#visualization">Visualization &amp; Post-processing</a>
+        <a href="#data-formats">Data Formats &amp; Standards</a>
+        <a href="#optimisation">Optimisation &amp; Uncertainty</a>
+      </div>
+
+      <!-- ── 1. THERMODYNAMICS & TRANSPORT ─────────────────────────────── -->
+      <div class="resource-category" id="thermo-transport">
+        <span class="category-title">Thermodynamics &amp; Transport</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://github.com/lkampoli/kappa" target="_blank">KAPPA</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Kinetic Approach to Physical Processes in Atmospheres — multi-temperature transport coefficients for partially-ionised gas mixtures.</div>
+          </li>
+          <li>
+            <a href="https://cantera.org" target="_blank">Cantera</a>
+            <span class="badge-tag badge-multi">C++/Python</span>
+            <div class="desc">Chemical kinetics, thermodynamics, and transport processes. Widely used for combustion and reacting-flow simulations.</div>
+          </li>
+          <li>
+            <a href="https://github.com/mutationpp/Mutationpp" target="_blank">Mutation++</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Multicomponent Thermodynamic And Transport in C++. Rigorous Chapman-Enskog transport for high-temperature and plasma flows.</div>
+          </li>
+          <li>
+            <a href="https://github.com/htgc/STANJAN" target="_blank">CEA / STANJAN</a>
+            <span class="badge-tag badge-multi">multi</span>
+            <div class="desc">NASA's Chemical Equilibrium with Applications — standard reference for equilibrium composition and thermodynamic properties at high temperatures.</div>
+          </li>
+          <li>
+            <a href="https://www.nist.gov/srd/refprop" target="_blank">REFPROP</a>
+            <span class="badge-tag badge-standard">NIST</span>
+            <div class="desc">NIST Reference Fluid Thermodynamic and Transport Properties. The authoritative source for real-gas equations of state.</div>
+          </li>
+          <li>
+            <a href="https://github.com/opencollab/arpack-ng" target="_blank">CoolProp</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <div class="desc">Open-source thermodynamic property library for 120+ fluids. Excellent Python interface and REFPROP-compatible calls.</div>
+          </li>
         </ul>
       </div>
 
-      <div class="resource-category">
-        <h4>CFD Solvers</h4>
-        <ul>
-          <li><a href="https://su2code.github.io" target="_blank">SU2</a> - Multiphysics Simulation and Design Software</li>
-          <li><a href="https://openfoam.org" target="_blank">OpenFOAM</a> - Open source CFD software</li>
-          <li><a href="https://github.com/andrealani/COOLFluiD" target="_blank">COOLFluiD</a> - HPC platform for multi-physics simulations</li>
+      <!-- ── 2. CFD SOLVERS — GENERAL ──────────────────────────────────── -->
+      <div class="resource-category" id="cfd-general">
+        <span class="category-title">CFD Solvers — General</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://openfoam.org" target="_blank">OpenFOAM</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">The reference open-source CFD toolbox. Finite-volume, unstructured, covers incompressible to reacting multi-phase flows. Vast community and solver library.</div>
+          </li>
+          <li>
+            <a href="https://su2code.github.io" target="_blank">SU2</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">Multiphysics simulation and design software with discrete adjoint for aerodynamic optimisation and shape design.</div>
+          </li>
+          <li>
+            <a href="https://github.com/andrealani/COOLFluiD" target="_blank">COOLFluiD</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">HPC platform for multi-physics simulations developed at VKI. Supports aerodynamics, MHD, radiation, and atmospheric re-entry.</div>
+          </li>
+          <li>
+            <a href="https://www.code-saturne.org" target="_blank">Code_Saturne</a>
+            <span class="badge-tag badge-cpp">C/Fortran</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">EDF's open-source solver for incompressible, weakly-compressible, and thermal flows. Robust RANS and LES turbulence models.</div>
+          </li>
+          <li>
+            <a href="https://palabos.unige.ch" target="_blank">Palabos</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Lattice Boltzmann solver from the University of Geneva. Modular and suited for complex geometry and porous-media flows.</div>
+          </li>
+          <li>
+            <a href="https://github.com/MFlowCode/MFC" target="_blank">MFC</a>
+            <span class="badge-tag badge-fortran">Fortran</span>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <div class="desc">Exascale compressible multiphase flow solver with NVIDIA and AMD GPU acceleration. 2025 Gordon Bell Prize finalist.</div>
+          </li>
+          <li>
+            <a href="https://github.com/DelNov/T-Flows" target="_blank">T-Flows</a>
+            <span class="badge-tag badge-fortran">Fortran</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">Turbulent Flows CFD code originally from TU Delft. LES/DNS capability on unstructured meshes.</div>
+          </li>
         </ul>
       </div>
 
-      <div class="resource-category">
-        <h4>Visualization & Meshing</h4>
-        <ul>
-          <li><a href="https://www.paraview.org" target="_blank">ParaView</a> - Data analysis and visualization</li>
-          <li><a href="http://gmsh.info" target="_blank">Gmsh</a> - 3D finite element mesh generator</li>
-          <li><a href="https://www.tecplot.com" target="_blank">Tecplot</a> - CFD Visualization tools</li>
+      <!-- ── 3. CFD SOLVERS — COMPRESSIBLE & HYPERSONIC ────────────────── -->
+      <div class="resource-category" id="cfd-compressible">
+        <span class="category-title">CFD Solvers — Compressible &amp; Hypersonic</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://github.com/ucns3d-team/UCNS3D" target="_blank">UCNS3D</a>
+            <span class="badge-tag badge-fortran">Fortran</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">High-order unstructured compressible Navier-Stokes 3D solver. WENO/TENO schemes for shock-dominated flows.</div>
+          </li>
+          <li>
+            <a href="https://github.com/gdeskos/DVMpp" target="_blank">Eilmer</a>
+            <span class="badge-tag badge-multi">D/Python</span>
+            <div class="desc">Transient, compressible flow solver from the University of Queensland. Designed for hypersonic and high-enthalpy flows; supports thermally-perfect and equilibrium gas models.</div>
+          </li>
+          <li>
+            <a href="https://gitlab.com/mpi-amrvac/mpi-amrvac" target="_blank">MPI-AMRVAC</a>
+            <span class="badge-tag badge-fortran">Fortran</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">Parallel adaptive mesh refinement framework for hyperbolic PDEs. Hydrodynamics and MHD modules with AMR shock-capturing.</div>
+          </li>
+          <li>
+            <a href="https://openfoam.org/release/hypersonic" target="_blank">hy2Foam</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Two-temperature open-source CFD model for hypersonic reacting flows built on OpenFOAM. Validated for non-equilibrium aerothermodynamics.</div>
+          </li>
+          <li>
+            <a href="https://github.com/stanford-cme213/stanford-cme213.github.io" target="_blank">AMROC / AMREX</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">AMReX block-structured adaptive mesh refinement framework from LBNL. GPU-ready, exascale-capable, widely used in combustion and reacting flow codes.</div>
+          </li>
+          <li>
+            <a href="https://github.com/weymouth/WaterLily.jl" target="_blank">WaterLily.jl</a>
+            <span class="badge-tag badge-julia">Julia</span>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <div class="desc">Fast and simple fluid simulator in Julia. Immersed-boundary approach; runs on CPU and GPU with identical code.</div>
+          </li>
         </ul>
       </div>
+
+      <!-- ── 4. SPECTRAL, FEM & PDE FRAMEWORKS ─────────────────────────── -->
+      <div class="resource-category" id="cfd-spectral">
+        <span class="category-title">Spectral, FEM &amp; PDE Frameworks</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://github.com/DedalusProject/dedalus" target="_blank">Dedalus</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Flexible framework for solving PDEs with spectral methods. Supports Chebyshev, Fourier, and Jacobi bases; ideal for stratified/rotating flows.</div>
+          </li>
+          <li>
+            <a href="https://nek5000.mcs.anl.gov" target="_blank">Nek5000 / NekRS</a>
+            <span class="badge-tag badge-fortran">Fortran/C++</span>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <div class="desc">Spectral-element DNS/LES code from Argonne National Laboratory. NekRS is the GPU-accelerated rewrite targeting exascale machines.</div>
+          </li>
+          <li>
+            <a href="https://fenicsproject.org" target="_blank">FEniCSx / Dolfin</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <div class="desc">Automated finite element framework. Expressive variational formulation via UFL; supports complex multiphysics and adjoint problems.</div>
+          </li>
+          <li>
+            <a href="https://www.dealii.org" target="_blank">deal.II</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">High-performance finite element library with AMR, hp-adaptivity, and large-scale parallel linear algebra via Trilinos/PETSc.</div>
+          </li>
+          <li>
+            <a href="https://github.com/FourierFlows/FourierFlows.jl" target="_blank">FourierFlows.jl</a>
+            <span class="badge-tag badge-julia">Julia</span>
+            <div class="desc">Pseudospectral PDE solver on periodic domains. GPU-ready; excellent for 2D turbulence and geophysical fluid dynamics.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 5. DISCONTINUITY FITTING ──────────────────────────────────── -->
+      <div class="resource-category" id="disc-fitting">
+        <span class="category-title">Discontinuity Fitting</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://github.com/UnDiFi/UnDiFi-2D" target="_blank">UnDiFi-2D</a>
+            <span class="badge-tag badge-fortran">Fortran</span>
+            <div class="desc">Unstructured Discontinuity Fitting code in 2D. Reference implementation for fitting-based shock-boundary treatment on unstructured meshes.</div>
+          </li>
+          <li>
+            <a href="https://github.com/lkampoli/OF_DBF" target="_blank">OF_DBF</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">OpenFOAM-based discontinuity boundary fitting library for general reacting compressible flows.</div>
+          </li>
+          <li>
+            <a href="https://github.com/lkampoli/Fortran_DF_Framework" target="_blank">Fortran DF Framework</a>
+            <span class="badge-tag badge-fortran">Fortran</span>
+            <span class="badge-tag badge-hpc">MPI/OpenMP</span>
+            <div class="desc">Modern Fortran discontinuity fitting framework supporting structured/unstructured meshes, Euler, Navier-Stokes and MHD physics, and hybrid parallelism.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 6. ML & PHYSICS-INFORMED METHODS ─────────────────────────── -->
+      <div class="resource-category" id="ml-physics">
+        <span class="category-title">ML &amp; Physics-Informed Methods</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://github.com/lululxvi/deepxde" target="_blank">DeepXDE</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Scientific machine learning library for PINNs and operator learning. Supports TensorFlow, PyTorch, JAX, and PaddlePaddle backends.</div>
+          </li>
+          <li>
+            <a href="https://github.com/NVIDIA/modulus" target="_blank">NVIDIA Modulus</a>
+            <span class="badge-tag badge-python">Python</span>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <div class="desc">AI-driven multi-physics simulation framework from NVIDIA. PINNs, neural operators, FNO, and physics-constrained surrogate models.</div>
+          </li>
+          <li>
+            <a href="https://github.com/google/jax" target="_blank">JAX</a>
+            <span class="badge-tag badge-python">Python</span>
+            <span class="badge-tag badge-gpu">GPU/TPU</span>
+            <div class="desc">Composable function transformations (grad, jit, vmap, pmap) for high-performance numerical computing. Foundation for a growing ML-physics ecosystem.</div>
+          </li>
+          <li>
+            <a href="https://github.com/patrick-kidger/diffrax" target="_blank">Diffrax</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Differentiable ODE/SDE/CDE solvers in JAX. Ideal for neural ODEs and adjoint-based training of dynamical models.</div>
+          </li>
+          <li>
+            <a href="https://github.com/phlippe/uvadlc_notebooks" target="_blank">neuraloperator</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Fourier Neural Operator (FNO) and related operator-learning architectures. Surrogate models for PDE solutions mapping function spaces.</div>
+          </li>
+          <li>
+            <a href="https://github.com/google-deepmind/graphcast" target="_blank">GraphCast / GNNs for CFD</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Graph neural network architectures for mesh-based physics simulation. Increasingly applied for data-driven turbulence closure and flow prediction.</div>
+          </li>
+          <li>
+            <a href="https://pytorch.org" target="_blank">PyTorch</a>
+            <span class="badge-tag badge-python">Python</span>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <div class="desc">Leading deep learning framework. Strong ecosystem for custom physics loss functions, adjoint training, and surrogate CFD workflows.</div>
+          </li>
+          <li>
+            <a href="https://scikit-learn.org" target="_blank">scikit-learn</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Comprehensive classical ML toolkit. Useful for regression/classification in CFD data analysis, PCA of flow fields, and clustering of shock topologies.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 7. SCIENTIFIC COMPUTING LIBRARIES ────────────────────────── -->
+      <div class="resource-category" id="scientific-computing">
+        <span class="category-title">Scientific Computing Libraries</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://petsc.org" target="_blank">PETSc</a>
+            <span class="badge-tag badge-cpp">C/C++/Fortran</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">Portable, extensible toolkit for parallel scientific computation. The workhorse for large-scale linear and non-linear solvers in CFD.</div>
+          </li>
+          <li>
+            <a href="https://trilinos.github.io" target="_blank">Trilinos</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">Collection of reusable scientific software libraries from Sandia. Linear algebra (Tpetra/Epetra), solvers (Belos), preconditioners (MueLu/ML), and more.</div>
+          </li>
+          <li>
+            <a href="https://hypre.readthedocs.io" target="_blank">hypre</a>
+            <span class="badge-tag badge-cpp">C</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">High-performance preconditioners and solvers including algebraic multigrid (BoomerAMG). Used inside PETSc and standalone for elliptic CFD sub-problems.</div>
+          </li>
+          <li>
+            <a href="https://numpy.org" target="_blank">NumPy / SciPy</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Foundation of scientific Python. SciPy adds ODE integrators, sparse linear algebra, special functions, and optimisation essential for CFD post-processing.</div>
+          </li>
+          <li>
+            <a href="https://github.com/cupy/cupy" target="_blank">CuPy</a>
+            <span class="badge-tag badge-python">Python</span>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <div class="desc">GPU-accelerated NumPy-compatible array library (CUDA/ROCm). Drop-in replacement for NumPy in performance-critical post-processing pipelines.</div>
+          </li>
+          <li>
+            <a href="https://github.com/inducer/pyopencl" target="_blank">OpenBLAS / LAPACK</a>
+            <span class="badge-tag badge-fortran">Fortran/C</span>
+            <div class="desc">Optimised basic linear algebra subroutines and eigensolvers. The numerical backbone of virtually every CFD solver.</div>
+          </li>
+          <li>
+            <a href="https://www.fftw.org" target="_blank">FFTW</a>
+            <span class="badge-tag badge-cpp">C</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">Fastest Fourier Transform in the West. MPI-parallel version used in spectral flow solvers and turbulence spectrum analysis.</div>
+          </li>
+          <li>
+            <a href="https://cgns.github.io" target="_blank">pyCGNS / cgnslib</a>
+            <span class="badge-tag badge-python">Python/C</span>
+            <div class="desc">Python and C interfaces to the CFD General Notation System. For reading, writing, and converting CFD mesh and solution data.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 8. HPC & PARALLEL COMPUTING ──────────────────────────────── -->
+      <div class="resource-category" id="hpc-parallel">
+        <span class="category-title">HPC &amp; Parallel Computing</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://www.open-mpi.org" target="_blank">Open MPI</a>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">High-performance MPI implementation. Standard choice for inter-node communication in distributed-memory CFD simulations.</div>
+          </li>
+          <li>
+            <a href="https://www.openmp.org" target="_blank">OpenMP</a>
+            <span class="badge-tag badge-multi">multi</span>
+            <div class="desc">Shared-memory parallel programming API. Routinely combined with MPI in hybrid parallelisation of CFD codes.</div>
+          </li>
+          <li>
+            <a href="https://developer.nvidia.com/cuda-toolkit" target="_blank">CUDA Toolkit</a>
+            <span class="badge-tag badge-gpu">GPU</span>
+            <div class="desc">NVIDIA's parallel computing platform and API. Essential for GPU-accelerated CFD solvers, ML training, and large-scale linear algebra.</div>
+          </li>
+          <li>
+            <a href="https://github.com/LLNL/spack" target="_blank">Spack</a>
+            <span class="badge-tag badge-multi">multi</span>
+            <div class="desc">HPC package manager from LLNL. Indispensable for reproducible environment management on clusters and supercomputers.</div>
+          </li>
+          <li>
+            <a href="https://www.cs.sandia.gov/zoltan/" target="_blank">Zoltan / PT-Scotch</a>
+            <span class="badge-tag badge-cpp">C/C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">Graph and mesh partitioning tools for load-balanced parallel CFD. PT-Scotch and ParMETIS are the standard partitioners used by most CFD frameworks.</div>
+          </li>
+          <li>
+            <a href="https://www.hdfgroup.org/solutions/hdf5/" target="_blank">HDF5 / NetCDF</a>
+            <span class="badge-tag badge-standard">Standard</span>
+            <div class="desc">Parallel I/O libraries for large scientific datasets. HDF5 is the storage backend for many CFD post-processing and restart workflows.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 9. MESHING ────────────────────────────────────────────────── -->
+      <div class="resource-category" id="meshing">
+        <span class="category-title">Meshing</span>
+        <ul class="resource-list">
+          <li>
+            <a href="http://gmsh.info" target="_blank">Gmsh</a>
+            <span class="badge-tag badge-cpp">C++/Python</span>
+            <div class="desc">Full-featured 3D finite element mesh generator with CAD kernel, scripting API, and post-processing. The open-source standard for research meshes.</div>
+          </li>
+          <li>
+            <a href="https://www.salome-platform.org" target="_blank">SALOME</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <div class="desc">Open-source platform integrating CAD (GEOM), meshing (SMESH), and physics solver coupling. Strong GUI and Python scripting interface.</div>
+          </li>
+          <li>
+            <a href="https://cfmesh.com/cfmesh/" target="_blank">cfMesh</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Robust automatic volume meshing library integrated with OpenFOAM. Delivers quality hex-dominant and polyhedral meshes on complex geometries.</div>
+          </li>
+          <li>
+            <a href="https://engrid.eu" target="_blank">enGrid</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Qt-based mesh generation tool with automatic prismatic boundary layer insertion for Navier-Stokes simulations. Outputs OpenFOAM and SU2 format.</div>
+          </li>
+          <li>
+            <a href="https://wias-berlin.de/software/tetgen/" target="_blank">TetGen</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Quality tetrahedral mesh generator and Delaunay mesh refinement. Widely used for unstructured 3D volume meshes in CFD and FEM.</div>
+          </li>
+          <li>
+            <a href="https://www.cs.cmu.edu/~quake/triangle.html" target="_blank">Triangle</a>
+            <span class="badge-tag badge-cpp">C</span>
+            <div class="desc">Constrained Delaunay triangulation and quality 2D mesh generation by J. R. Shewchuk. Reference tool for 2D unstructured mesh research.</div>
+          </li>
+          <li>
+            <a href="https://github.com/PyMesh/PyMesh" target="_blank">PyMesh</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <div class="desc">Geometry processing library for Python. Wraps Triangle, TetGen, and CGAL; useful for mesh pre-processing and repair pipelines.</div>
+          </li>
+          <li>
+            <a href="https://www.cgal.org" target="_blank">CGAL</a>
+            <span class="badge-tag badge-cpp">C++</span>
+            <div class="desc">Computational Geometry Algorithms Library. Rigorous implementations of Delaunay triangulation, mesh generation, and surface remeshing.</div>
+          </li>
+          <li>
+            <a href="https://github.com/nschloe/meshio" target="_blank">meshio</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Reads and writes mesh data in 40+ formats (Gmsh, VTK, CGNS, Abaqus, etc.). Essential for cross-code mesh conversion in CFD workflows.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 10. VISUALIZATION & POST-PROCESSING ──────────────────────── -->
+      <div class="resource-category" id="visualization">
+        <span class="category-title">Visualization &amp; Post-processing</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://www.paraview.org" target="_blank">ParaView</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">The open-source standard for large-scale scientific visualisation. Server-client architecture enables in-situ and remote post-processing of HPC data.</div>
+          </li>
+          <li>
+            <a href="https://wci.llnl.gov/simulation/computer-codes/visit" target="_blank">VisIt</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <span class="badge-tag badge-hpc">MPI</span>
+            <div class="desc">LLNL's interactive parallel visualisation and graphical analysis tool. Strong support for AMR data and large-scale turbulence datasets.</div>
+          </li>
+          <li>
+            <a href="https://www.tecplot.com" target="_blank">Tecplot 360</a>
+            <div class="desc">CFD-focused visualisation with automated PyTecplot scripting, precise contour control, and high-quality publication graphics.</div>
+          </li>
+          <li>
+            <a href="https://matplotlib.org" target="_blank">Matplotlib</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">2D plotting library for Python. Combined with NumPy and SciPy, the standard tool for CFD data analysis, spectral plots, and convergence histories.</div>
+          </li>
+          <li>
+            <a href="https://plotly.com/python/" target="_blank">Plotly / Dash</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Interactive visualisation library. Dash enables browser-based dashboards for CFD parameter sweeps and surrogate model exploration.</div>
+          </li>
+          <li>
+            <a href="https://docs.pyvista.org" target="_blank">PyVista</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">3D visualisation for Python built on VTK. Enables scriptable mesh inspection, streamline tracing, and interactive Jupyter rendering of CFD fields.</div>
+          </li>
+          <li>
+            <a href="https://vtk.org" target="_blank">VTK</a>
+            <span class="badge-tag badge-cpp">C++/Python</span>
+            <div class="desc">Visualisation Toolkit — the algorithmic backbone of ParaView and PyVista. Direct access to volume rendering, iso-surfacing, and streamline algorithms.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 11. DATA FORMATS & STANDARDS ─────────────────────────────── -->
+      <div class="resource-category" id="data-formats">
+        <span class="category-title">Data Formats &amp; Standards</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://cgns.github.io" target="_blank">CGNS</a>
+            <span class="badge-tag badge-standard">Standard</span>
+            <div class="desc">CFD General Notation System — the community standard for storing and exchanging CFD mesh and solution data. Supported by most major solvers.</div>
+          </li>
+          <li>
+            <a href="https://www.hdfgroup.org/solutions/hdf5/" target="_blank">HDF5</a>
+            <span class="badge-tag badge-standard">Standard</span>
+            <div class="desc">Hierarchical Data Format for large, complex, heterogeneous data. Underpins CGNS and many restart/checkpoint formats for HPC simulations.</div>
+          </li>
+          <li>
+            <a href="https://vtk.org/VTK-File-Formats.pdf" target="_blank">VTK XML Formats</a>
+            <span class="badge-tag badge-standard">Standard</span>
+            <div class="desc">VTK's XML-based unstructured and rectilinear grid formats (.vtu, .vts). The native output of OpenFOAM's post-processing and most modern solvers.</div>
+          </li>
+          <li>
+            <a href="https://www.unidata.ucar.edu/software/netcdf/" target="_blank">NetCDF</a>
+            <span class="badge-tag badge-standard">Standard</span>
+            <div class="desc">Self-describing array data format common in geophysical and atmospheric CFD. Supports parallel I/O via PnetCDF and HDF5 backends.</div>
+          </li>
+          <li>
+            <a href="https://github.com/nschloe/meshio" target="_blank">meshio</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Universal mesh format converter. Bridges CGNS, Gmsh, VTK, Abaqus, MEDIT, and 35+ other formats in a single Python package.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ── 12. OPTIMISATION & UNCERTAINTY ────────────────────────────── -->
+      <div class="resource-category" id="optimisation">
+        <span class="category-title">Optimisation &amp; Uncertainty Quantification</span>
+        <ul class="resource-list">
+          <li>
+            <a href="https://github.com/su2code/SU2" target="_blank">DAFoam</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <div class="desc">Discrete Adjoint with OpenFOAM for high-fidelity MDO. Gradient-based aerodynamic shape optimisation with parallel adjoint sensitivity computation.</div>
+          </li>
+          <li>
+            <a href="https://github.com/openturns/openturns" target="_blank">OpenTURNS</a>
+            <span class="badge-tag badge-python">Python/C++</span>
+            <div class="desc">Industrial framework for uncertainty treatment, reliability analysis, and sensitivity analysis (Sobol indices) for complex simulation codes.</div>
+          </li>
+          <li>
+            <a href="https://github.com/SMTorg/smt" target="_blank">SMT</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Surrogate Modeling Toolbox. Kriging/GP, RBF, and polynomial chaos surrogates for CFD design-space exploration and aerodynamic optimisation.</div>
+          </li>
+          <li>
+            <a href="https://botorch.org" target="_blank">BoTorch / Ax</a>
+            <span class="badge-tag badge-python">Python</span>
+            <span class="badge-tag badge-ml">ML</span>
+            <div class="desc">Bayesian optimisation framework built on PyTorch. Used for sample-efficient parameter tuning of computationally expensive CFD simulations.</div>
+          </li>
+          <li>
+            <a href="https://github.com/scikit-optimize/scikit-optimize" target="_blank">scikit-optimize</a>
+            <span class="badge-tag badge-python">Python</span>
+            <div class="desc">Sequential model-based optimisation in Python. Gaussian Process and Random Forest surrogate methods for blackbox CFD objective minimisation.</div>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
 
-<footer class="text-center" style="margin-top:40px; padding: 20px; background-color: #f8f9fa;">
-  <p>&copy; 2023 Lorenzo Campoli</p>
+<footer class="text-center">
+  <p style="margin:0; color:#666; font-size:0.88rem;">&copy; 2025 Lorenzo Campoli</p>
 </footer>
 
 </body>
