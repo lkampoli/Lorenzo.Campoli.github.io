@@ -1,111 +1,108 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the  Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
   <title>Lorenzo Campoli</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+    }
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .profile-img {
+      max-width: 300px;
+      border-radius: 50%;
+    }
+    .social-icons a {
+      font-size: 2em;
+      margin: 0 10px;
+      color: #333;
+    }
+    .institution-logos img {
+        max-width: 200px;
+        margin: 10px;
+    }
+  </style>
 </head>
 <body>
 
 <!-- Navigation -->
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="research.html">Research & Outreach</a></li>
-              <li><a href="publications.html">Publications</a></li>
-              <li><a href="talks.html">Talks</a></li>
-              <li><a href="resources.html">Resources</a></li> 
-              <li><a href="CV/CV.pdf">CV</a></li> 
-        </ul>
-      </div>
-    </nav>
-  
-  <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Entries Column -->
-            <div class="col-md-8" style="height: 100vh;">
-                
-                <!-- Main Image -->
-                <center>
-                <p class="aligncenter">
-                <img class="img-responsive" src="personal.jpg" width="350" height="150" class="center">
-                </p>
-                </center>
-                
-                <div style="margin-top:3%; text-align:justify;">       
-		    <p>	Hello, my name is Lorenzo Campoli and I'm currently working at <a href="https://eng.unimelb.edu.au">The University of Melbourne</a> on data driven turbulence modeling. 
-			At the moment, I am exploring the possibility of using unsupervised machine learning algorithms coupled with GEne Expression Programming (GEP) framework to improve 
-			the generalizability and explainability of Reynolds Averaged Navier-Stokes (RANS) turbulence closure models. </p>
-                    
-			<p> Previously, I was Assistant Professor at the <a href="https://gam.spbu.ru">Fluid Mechanics Department at Saint Petersburg State University</a>.
-			    I worked on the development and implementation of numerical methods for high-speed non-equilibrium viscous reactive flows adopting a state-to-state 
-				and multi-temperature formulations. During this time, I also lead several courses about machine learning and hypersonics. </p>
-
-                    <p> My scientific interests are related to hypersonic reactive viscous non-equilibrium flows, numerical methods for high-speed flows,
-			    shock-fitting, turbulence closure modeling, machine learning and high performance computing. I also collaborate to the <a href="https://github.com/UnDiFi/UnDiFi-2D">UnDiFi-2D</a> project about shock-fitting. </p>
-                    
-                </div>
-
-            </div> 
-
-            <!-- Contact Info on the Sidebar -->
-            <div class="col-md-3">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Lorenzo Campoli</b></div><br>
-		   
-		<p><b>lorenzo.campoli@unimelb.edu.au</b><br></p>
-                <p>
-                <b>Research Fellow</b><br>
-                Faculty of Engineering and Information Technology (FEIT)<br>
-                University of Melbourne<br>
-                </p>
-		    
-                <p><b>l.kampoli@spbu.ru</b><br></p>
-                <p>
-                <b>Assistant Professor</b><br>
-                Fluid Mechanics Department<br>
-                Saint Petersburg State University<br>
-                </p>
-            </div>
-            
-            <!-- Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:2%">
-	      <a href="https://scholar.google.com/citations?hl=en&user=U0x5ykgAAAAJ&hl=en&oi=ao"><i class="ai ai-google-scholar-square ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://www.linkedin.com/in/lorenzo-campoli-325299191"><i class="fa fa-linkedin ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://www.researchgate.net/profile/Lorenzo-Campoli"><i class="ai ai-researchgate-square ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://github.com/lkampoli"><i class="fa fa-github ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://www.semanticscholar.org/author/L.-Campoli/13343636"><i class="ai ai-semantic-scholar ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://orcid.org/0000-0002-0510-9422"><i class="ai ai-orcid ai-3x" style="font-size: 6em;"></i></a>
-              <dd><img src="Melbourne.png" width=300/></dd>
-              <dd><a href="https://gam.spbu.ru/staff/13-staff/51-campoli.html"><img src="spbgu.png" width=320/></a></dd>
-              <dd><img src="sapienza.png" width=300/></dd>
-              <dd><img src="inria.png" width=300/></dd>
-              <dd><img src="nasa.svg" width=300/></dd>
-            </div>
-            
-        </div>
-
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Lorenzo Campoli</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="research.html">Research & Outreach</a></li>
+        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" href="talks.html">Talks</a></li>
+        <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li> 
+        <li class="nav-item"><a class="nav-link" href="CV/CV.pdf">CV</a></li> 
+      </ul>
     </div>
-    <!-- /.container -->
-    
-    <!-- Other people may like it too! -->
-    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
-    
-</body>
+  </div>
+</nav>
 
+<!-- Page Content -->
+<div class="container" style="margin-top:80px">
+  <div class="row">
+    <!-- Profile Column -->
+    <div class="col-md-4 text-center">
+      <img src="personal.jpg" class="profile-img" alt="Lorenzo Campoli">
+      <h1 style="font-family: 'Oswald', sans-serif;">Lorenzo Campoli</h1>
+      <p><b>Research Fellow</b><br>
+      Faculty of Engineering and Information Technology (FEIT)<br>
+      University of Melbourne</p>
+      <p><b>lorenzo.campoli@unimelb.edu.au</b></p>
+      <div class="social-icons">
+        <a href="https://scholar.google.com/citations?hl=en&user=U0x5ykgAAAAJ&hl=en&oi=ao" target="_blank"><i class="ai ai-google-scholar-square"></i></a>
+        <a href="https://www.linkedin.com/in/lorenzo-campoli-325299191" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.researchgate.net/profile/Lorenzo-Campoli" target="_blank"><i class="ai ai-researchgate-square"></i></a>
+        <a href="https://github.com/lkampoli" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.semanticscholar.org/author/L.-Campoli/13343636" target="_blank"><i class="ai ai-semantic-scholar"></i></a>
+        <a href="https://orcid.org/0000-0002-0510-9422" target="_blank"><i class="ai ai-orcid"></i></a>
+      </div>
+    </div>
+    <!-- Content Column -->
+    <div class="col-md-8">
+      <h2>About Me</h2>
+      <p style="text-align:justify;">I am a Research Fellow at The University of Melbourne, where my work focuses on data-driven turbulence modeling. I am currently exploring the use of unsupervised machine learning algorithms and Gene Expression Programming (GEP) to enhance the generalizability and explainability of Reynolds-Averaged Navier-Stokes (RANS) turbulence closure models. My research interests include hypersonic reactive viscous non-equilibrium flows, numerical methods for high-speed flows, shock-fitting, turbulence closure modeling, machine learning, and high-performance computing. I am also a contributor to the UnDiFi-2D project, an open-source code for unstructured discontinuity fitting.</p>
+      <p style="text-align:justify;">Previously, I was an Assistant Professor at the Fluid Mechanics Department at Saint Petersburg State University, where I developed and implemented numerical methods for high-speed non-equilibrium viscous reactive flows. During my time there, I also taught several courses on machine learning and hypersonics.</p>
+      <hr>
+      <h2>News</h2>
+      <ul>
+        <li><b>[2022-03-13]</b> Our paper "Assessment of Machine Learning Methods for State-to-State Approach in Nonequilibrium Flow Simulations" has been published in Mathematics.</li>
+        <li><b>[2021-05-28]</b> Our paper "UnDiFi-2D: an Unstructured Discontinuity Fitting code for 2D grids" has been published in Computer Physics Communications.</li>
+      </ul>
+      <hr>
+      <h2>Affiliations</h2>
+      <div class="institution-logos text-center">
+          <img src="Melbourne.png" alt="University of Melbourne">
+          <img src="spbgu.png" alt="Saint Petersburg State University">
+          <img src="sapienza.png" alt="Sapienza University of Rome">
+          <img src="inria.png" alt="Inria">
+          <img src="nasa.svg" alt="NASA">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center" style="margin-top:20px; padding: 20px; background-color: #f8f9fa;">
+  <p>&copy; 2023 Lorenzo Campoli | Template by <a href="https://github.com/mavroudisv/plain-academic">Plain Academic</a></p>
+</footer>
+
+</body>
+</html>
 </html>

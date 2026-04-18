@@ -1,121 +1,105 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the  Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
-  <title>Lorenzo Campoli</title>
+  <title>Publications - Lorenzo Campoli</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+  <style>
+    body { font-family: 'Helvetica', sans-serif; padding-top: 80px; }
+    .navbar { margin-bottom: 0; border-radius: 0; }
+    .section-title { font-family: 'Oswald', sans-serif; border-bottom: 2px solid #333; margin-bottom: 20px; padding-bottom: 5px; }
+    .paper-item { margin-bottom: 15px; }
+    .paper-title { font-weight: bold; }
+    .paper-authors { font-style: italic; }
+  </style>
 </head>
 <body>
 
 <!-- Navigation -->
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="research.html">Research & Outreach</a></li>
-              <li><a href="publications.html">Publications</a></li>
-              <li><a href="talks.html">Talks</a></li>
-       	      <li><a href="resources.html">Resources</a></li>
-              <li><a href="CV/CV.pdf">CV</a></li> 
-        </ul>
-      </div>
-    </nav>
-  
-  <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Entries Column -->
-            <div class="col-md-8" style="height: 100vh;">
-                                
-                <div style="height: 100vh;">    
-                <h2 id="publications">Publications</h2>
-
-                <strong>Under-review</strong><br/>
-                <ol>
-
-                <li class="paper"><a href="...">...</a>, ...</li>
-
-
-                </ol>
-                               
-                <strong>Peer-reviewed journal articles</strong><br/>
-                <ol>
-
-		<li class="paper"><a href="https://doi.org/10.3390/math10060928">Assessment of Machine Learning Methods for State-to-State Approach in Nonequilibrium Flow Simulations</a>, L. Campoli, E. Kustova, and P. Maltseva, Mathematics 10.6 (2022): 928. </li>
-                </ol>
-
-                <strong>Peer-reviewed conference proceedings</strong><br/>
-                <ol>
-
-                <li class="paper"><a href="...">...</a>, ...</li>
-
-                </ol>
-
-                <strong>Conference proceedings</strong><br/>
-                <ol>
-
-                <li class="paper"><a href="...">...</a>, ...</li>
-
-                </ol>
-
-                <strong>Peer-reviewed workshop proceedings</strong><br/>
-                <ol>
-
-                <li class="paper"><a href="...">...</a>, ...</li>
-                
-                </ol>
-
-                </div> 
-            
-            </div> 
-
-	    <!-- Contact Info on the Sidebar -->
-            <div class="col-md-3">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Lorenzo Campoli</b></div><br>
-                <p><b>l.kampoli@spbu.ru</b><br></p>
-                <p>
-                <b>Assistant Professor</b><br>
-                Fluid Mechanics Department<br>
-                Saint Petersburg State University<br>
-                </p>
-            </div>
-
-	     <!-- Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:2%">
-	      <a href="https://scholar.google.com/citations?hl=en&user=U0x5ykgAAAAJ&hl=en&oi=ao"><i class="ai ai-google-scholar-square ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://www.linkedin.com/in/lorenzo-campoli-325299191"><i class="fa fa-linkedin ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://www.researchgate.net/profile/Lorenzo-Campoli"><i class="ai ai-researchgate-square ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://github.com/lkampoli"><i class="fa fa-github ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://www.semanticscholar.org/author/L.-Campoli/13343636"><i class="ai ai-semantic-scholar ai-3x" style="font-size: 6em;"></i></a>
-              <a href="https://orcid.org/0000-0002-0510-9422"><i class="ai ai-orcid ai-3x" style="font-size: 6em;"></i></a>
-              <dd><a href="https://gam.spbu.ru/staff/13-staff/51-campoli.html"><img src="spbgu.png" width=320/></a></dd>
-              <dd><img src="sapienza.png" width=300/></dd>
-              <dd><img src="inria.png" width=300/></dd>
-              <dd><img src="nasa.svg" width=300/></dd>
-            </div>
-
-        </div>
-
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Lorenzo Campoli</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="research.html">Research & Outreach</a></li>
+        <li class="nav-item"><a class="nav-link active" href="publications.html">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" href="talks.html">Talks</a></li>
+        <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li> 
+        <li class="nav-item"><a class="nav-link" href="CV/CV.pdf">CV</a></li> 
+      </ul>
     </div>
-    <!-- /.container -->
-    
-    <!-- Other people may like it too! -->
-    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
-    
-</body>
+  </div>
+</nav>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="section-title">Peer-Reviewed Journal Articles</h2>
+      <div class="paper-item">
+        <span class="paper-title">Assessment of Machine Learning Methods for State-to-State Approach in Nonequilibrium Flow Simulations</span><br>
+        <span class="paper-authors">L. Campoli, E. Kustova, and P. Maltseva</span><br>
+        Mathematics 10(6), 928 (2022). <a href="https://doi.org/10.3390/math10060928" target="_blank">DOI</a>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-title">UnDiFi-2D: An unstructured discontinuity fitting code for 2D grids</span><br>
+        <span class="paper-authors">L. Campoli, A. Assonitis, M. Ciallella, R. Paciorri, A. Bonfiglioli, M. Ricchiuto</span><br>
+        Computer Physics Communications 271, 108202 (2021). <a href="https://doi.org/10.1016/j.cpc.2021.108202" target="_blank">DOI</a>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-title">Models validation and code profiling in state-to-state simulations of shock heated air flows</span><br>
+        <span class="paper-authors">L. Campoli, O. Kunova, E. Kustova, M. Melnik</span><br>
+        Acta Astronautica 175, 493-509 (2020). <a href="https://doi.org/10.1016/j.actaastro.2020.06.008" target="_blank">DOI</a>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-title">Numerical investigation of viscous fingering phenomenon for raw field data</span><br>
+        <span class="paper-authors">F. Bakharev, L. Campoli, A. Enin, S. Matveenko, Y. Petrova, S. Tikhomirov, A. Yakovlev</span><br>
+        Transport in Porous Media 132(2), 443-464 (2020). <a href="https://doi.org/10.1007/s11242-020-01400-5" target="_blank">DOI</a>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-title">KAPPA: Kinetic approach to physical processes in atmospheres library in C++</span><br>
+        <span class="paper-authors">L. Campoli, G.P. Oblapenko, E.V. Kustova</span><br>
+        Computer Physics Communications 236, 244-267 (2019). <a href="https://doi.org/10.1016/j.cpc.2018.10.021" target="_blank">DOI</a>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-title">Unsteady shock‐fitting for unstructured grids</span><br>
+        <span class="paper-authors">A. Bonfiglioli, R. Paciorri, L. Campoli</span><br>
+        International Journal for Numerical Methods in Fluids 81(4), 245-261 (2016). <a href="https://doi.org/10.1002/fld.4183" target="_blank">DOI</a>
+      </div>
+
+      <h2 class="section-title">Book Chapters</h2>
+      <div class="paper-item">
+        <span class="paper-title">Shock-fitting and predictor-corrector explicit ALE Residual Distribution</span><br>
+        <span class="paper-authors">L. Campoli, P. Quemar, A. Bonfiglioli, M. Ricchiuto</span><br>
+        In: Shock Fitting (pp. 113-129). Springer, Cham (2017).
+      </div>
+
+      <h2 class="section-title">Preprints</h2>
+      <div class="paper-item">
+        <span class="paper-title">Assessment of machine learning methods for state-to-state approaches</span><br>
+        <span class="paper-authors">L. Campoli, E. Kustova, P. Maltseva</span><br>
+        arXiv preprint arXiv:2104.01042 (2021).
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="text-center" style="margin-top:40px; padding: 20px; background-color: #f8f9fa;">
+  <p>&copy; 2023 Lorenzo Campoli | <a href="https://scholar.google.com/citations?user=U0x5ykgAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+</footer>
+
+</body>
 </html>
