@@ -1,106 +1,1096 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Lorenzo Campoli</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
-  <style>
-    body {
-      font-family: 'Helvetica', sans-serif;
-    }
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    .profile-img {
-      max-width: 300px;
-      border-radius: 50%;
-    }
-    .social-icons a {
-      font-size: 2em;
-      margin: 0 10px;
-      color: #333;
-    }
-    .institution-logos img {
-        max-width: 200px;
-        margin: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorenzo Campoli — Computational Scientist</title>
+<meta name="description" content="Research Fellow at the University of Melbourne. Hypersonic flows, shock-fitting, turbulence modelling, scientific machine learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #070b14;
+    --bg-2:      #0c1220;
+    --bg-3:      #111827;
+    --border:    rgba(255,255,255,0.08);
+    --border-hi: rgba(255,255,255,0.16);
+    --text:      #dde3f0;
+    --text-2:    #8899b4;
+    --text-3:    #4a5a72;
+    --accent:    #38c7f8;
+    --accent-glow: rgba(56,199,248,0.15);
+    --amber:     #f5a623;
+    --amber-glow: rgba(245,166,35,0.12);
+    --green:     #4cd9a0;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'Lora', serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── CANVAS BACKGROUND ── */
+  #bg-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.45;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+    background: rgba(7, 11, 20, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 2.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-head);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 7rem 2.5rem;
+  }
+  section + section { padding-top: 0; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 5rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-name {
+    font-family: var(--font-head);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    color: #ffffff;
+    margin-bottom: 0.35em;
+    letter-spacing: -0.02em;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-title {
+    font-family: var(--font-head);
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 400;
+    color: var(--text-2);
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+  }
+  .hero-title strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .hero-bio {
+    max-width: 600px;
+    color: var(--text-2);
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 3rem;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 3rem;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.3em 0.8em;
+    border-radius: 3px;
+    border: 1px solid var(--border-hi);
+    color: var(--text-2);
+    background: rgba(255,255,255,0.03);
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  .btn {
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.75em 1.75em;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #070b14;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-hi);
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .social-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    margin-left: 0.5rem;
+  }
+  .social-links a {
+    color: var(--text-3);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .social-links a:hover { color: var(--accent); }
+
+  /* ── SECTION HEADERS ── */
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+  .sec-title {
+    font-family: var(--font-head);
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .sec-sub {
+    color: var(--text-2);
+    font-size: 0.95rem;
+    margin-bottom: 3.5rem;
+    max-width: 560px;
+  }
+
+  /* ── RESEARCH CARDS ── */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .card:hover {
+    border-color: var(--border-hi);
+    transform: translateY(-3px);
+    background: var(--bg-3);
+  }
+  .card:hover::before { opacity: 1; }
+  .card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .card-title {
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.6rem;
+    line-height: 1.35;
+  }
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--text-2);
+    line-height: 1.7;
+  }
+  .card-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2em 0.6em;
+    border-radius: 2px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid rgba(56,199,248,0.25);
+  }
+  .card-badge.amber {
+    background: var(--amber-glow);
+    color: var(--amber);
+    border-color: rgba(245,166,35,0.25);
+  }
+
+  /* ── PUBLICATIONS ── */
+  #publications { background: linear-gradient(180deg, transparent, var(--bg-2) 10%, var(--bg-2) 90%, transparent); }
+  .pub-list { margin-top: 2.5rem; }
+  .pub-year-group { margin-bottom: 3rem; }
+  .pub-year {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+  .pub-entry {
+    padding: 1.25rem 0 1.25rem 1.25rem;
+    border-left: 2px solid var(--border);
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .pub-entry::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 1.6rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--text-3);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .pub-entry:hover { border-color: var(--accent); }
+  .pub-entry:hover::before {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+  .pub-title {
+    font-family: var(--font-head);
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 0.35rem;
+  }
+  .pub-authors {
+    font-size: 0.82rem;
+    color: var(--text-2);
+    font-style: italic;
+    margin-bottom: 0.3rem;
+    font-family: var(--font-body);
+  }
+  .pub-venue {
+    font-size: 0.8rem;
+    color: var(--text-3);
+    font-family: var(--font-mono);
+  }
+  .pub-doi {
+    display: inline-block;
+    margin-left: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: opacity 0.2s;
+  }
+  .pub-doi:hover { opacity: 0.7; }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  .timeline { position: relative; margin-top: 2.5rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-item {
+    padding: 0 0 2.5rem 2.25rem;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0.4rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .tl-period {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .tl-role {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.2rem;
+  }
+  .tl-org {
+    font-size: 0.85rem;
+    color: var(--text-2);
+    margin-bottom: 0.6rem;
+  }
+  .tl-desc {
+    font-size: 0.875rem;
+    color: var(--text-2);
+    line-height: 1.75;
+    max-width: 580px;
+  }
+
+  /* ── TEACHING ── */
+  .teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .teach-card {
+    padding: 1.25rem;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+  .teach-card:hover { border-color: var(--border-hi); }
+  .teach-card h4 {
+    font-family: var(--font-head);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .teach-card span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-3);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── AFFILIATIONS ── */
+  .affil-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    align-items: center;
+  }
+  .affil-chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--text-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.45em 1em;
+    background: var(--bg-2);
+    transition: all 0.2s;
+  }
+  .affil-chip:hover {
+    border-color: var(--border-hi);
+    color: var(--text);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid var(--border);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 680px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .contact-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .contact-value {
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .contact-value a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .contact-value a:hover { opacity: 0.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin: 3rem 0 0;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: var(--font-head);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-desc {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── NEWS ── */
+  .news-list { margin-top: 2rem; }
+  .news-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .news-date {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    min-width: 80px;
+    padding-top: 0.15rem;
+  }
+  .news-text {
+    font-size: 0.875rem;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+  .news-text strong {
+    color: var(--text);
+    font-weight: 500;
+    font-style: normal;
+    font-family: var(--font-head);
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-ind {
+    position: absolute;
+    bottom: 3rem;
+    left: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: pulse-down 2s ease-in-out infinite;
+  }
+  .scroll-ind span {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    writing-mode: vertical-lr;
+  }
+  .scroll-ind::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--text-3), transparent);
+  }
+  @keyframes pulse-down {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(6px); opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 5rem 1.25rem; }
+    .hero-name { font-size: 2.6rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 500px) {
+    .nav-links { display: none; }
+  }
+</style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Lorenzo Campoli</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="research.html">Research & Outreach</a></li>
-        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
-        <li class="nav-item"><a class="nav-link" href="talks.html">Talks</a></li>
-        <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li> 
-        <li class="nav-item"><a class="nav-link" href="CV/CV.pdf">CV</a></li> 
-      </ul>
-    </div>
-  </div>
+<canvas id="bg-canvas"></canvas>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#hero">L<span>.</span>Campoli</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Papers</a></li>
+    <li><a href="#experience">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<!-- Page Content -->
-<div class="container" style="margin-top:80px">
-  <div class="row">
-    <!-- Profile Column -->
-    <div class="col-md-4 text-center">
-      <img src="personal.jpg" class="profile-img" alt="Lorenzo Campoli">
-      <h1 style="font-family: 'Oswald', sans-serif;">Lorenzo Campoli</h1>
-      <p><b>Independent Researcher</b><br>
-      <p><b>delphic.node@proton.me</b></p>
-      <div class="social-icons">
-        <a href="https://scholar.google.com/citations?hl=en&user=U0x5ykgAAAAJ&hl=en&oi=ao" target="_blank"><i class="ai ai-google-scholar-square"></i></a>
-        <a href="https://www.linkedin.com/in/lorenzo-campoli-325299191" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.researchgate.net/profile/Lorenzo-Campoli" target="_blank"><i class="ai ai-researchgate-square"></i></a>
-        <a href="https://github.com/lkampoli" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.semanticscholar.org/author/L.-Campoli/13343636" target="_blank"><i class="ai ai-semantic-scholar"></i></a>
-        <a href="https://orcid.org/0000-0002-0510-9422" target="_blank"><i class="ai ai-orcid"></i></a>
-      </div>
+<!-- ── HERO ── -->
+<section id="hero">
+  <p class="hero-eyebrow">Research Fellow · University of Melbourne</p>
+  <h1 class="hero-name">Lorenzo<br><span>Campoli</span></h1>
+  <p class="hero-title">
+    <strong>Computational Fluid Dynamics</strong> · Scientific Machine Learning · High-Performance Computing
+  </p>
+  <p class="hero-bio">
+    I work at the intersection of hypersonic flow physics, unstructured shock-fitting algorithms, and 
+    data-driven turbulence closure. Currently developing ML and GEP-based methods to improve the 
+    generalisability of RANS models at the University of Melbourne.
+  </p>
+  <div class="hero-tags">
+    <span class="tag">Hypersonics</span>
+    <span class="tag">Non-Equilibrium Flows</span>
+    <span class="tag">Shock-Fitting</span>
+    <span class="tag">RANS Turbulence</span>
+    <span class="tag">Gene Expression Programming</span>
+    <span class="tag">State-to-State Kinetics</span>
+    <span class="tag">Scientific ML</span>
+    <span class="tag">HPC / MPI</span>
+    <span class="tag">C++ · Fortran · Python</span>
+  </div>
+  <div class="hero-actions">
+    <a href="https://lkampoli.github.io/Lorenzo.Campoli.github.io/CV/CV.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download CV</a>
+    <a href="#publications" class="btn btn-secondary">Publications</a>
+    <div class="social-links">
+      <a href="https://github.com/lkampoli" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=U0x5ykgAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+      <a href="https://orcid.org/0000-0002-0510-9422" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://www.researchgate.net/profile/Lorenzo_Campoli" target="_blank" rel="noopener">ResearchGate</a>
     </div>
-    <!-- Content Column -->
-    <div class="col-md-8">
-      <h2>About Me</h2>
-      <p style="text-align:justify;">I am a Research Fellow at The University of Melbourne, where my work focuses on data-driven turbulence modeling. I am currently exploring the use of unsupervised machine learning algorithms and Gene Expression Programming (GEP) to enhance the generalizability and explainability of Reynolds-Averaged Navier-Stokes (RANS) turbulence closure models. My research interests include hypersonic reactive viscous non-equilibrium flows, numerical methods for high-speed flows, shock-fitting, turbulence closure modeling, machine learning, and high-performance computing. I am also a contributor to the UnDiFi-2D project, an open-source code for unstructured discontinuity fitting.</p>
-      <p style="text-align:justify;">Previously, I was an Assistant Professor at the Fluid Mechanics Department at Saint Petersburg State University, where I developed and implemented numerical methods for high-speed non-equilibrium viscous reactive flows. During my time there, I also taught several courses on machine learning and hypersonics.</p>
-      <hr>
-      <h2>News</h2>
-      <ul>
-        <li><b>[2022-03-13]</b> Our paper "Assessment of Machine Learning Methods for State-to-State Approach in Nonequilibrium Flow Simulations" has been published in Mathematics.</li>
-        <li><b>[2021-05-28]</b> Our paper "UnDiFi-2D: an Unstructured Discontinuity Fitting code for 2D grids" has been published in Computer Physics Communications.</li>
-      </ul>
-      <hr>
-      <h2>Affiliations</h2>
-      <div class="institution-logos text-center">
-          <img src="Melbourne.png" alt="University of Melbourne">
-          <img src="spbgu.png" alt="Saint Petersburg State University">
-          <img src="sapienza.png" alt="Sapienza University of Rome">
-          <img src="inria.png" alt="Inria">
-          <img src="nasa.svg" alt="NASA">
+  </div>
+  <div class="scroll-ind"><span>scroll</span></div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <p class="sec-label">About</p>
+  <h2 class="sec-title">Modelling Flow,<br>from Shocks to Turbulence</h2>
+  <p class="sec-sub">
+    A computational scientist building tools that sit at the frontier of physics-based simulation and data-driven modelling.
+  </p>
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">15<span>+</span></div>
+      <div class="stat-desc">Peer-reviewed papers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">238<span>+</span></div>
+      <div class="stat-desc">Citations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1548<span>+</span></div>
+      <div class="stat-desc">GitHub repos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-desc">Courses taught</div>
+    </div>
+  </div>
+
+  <div class="news-list" style="margin-top: 3.5rem;">
+    <p class="sec-label" style="margin-bottom: 1.25rem;">Recent News</p>
+    <div class="news-item">
+      <span class="news-date">2022-03-13</span>
+      <p class="news-text"><strong>Published in Mathematics.</strong> "Assessment of Machine Learning Methods for State-to-State Approach in Nonequilibrium Flow Simulations" — Mathematics 10(6), 928.</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">2021-05-28</span>
+      <p class="news-text"><strong>Published in Comput. Phys. Commun.</strong> "UnDiFi-2D: an Unstructured Discontinuity Fitting code for 2D grids" — CPC 271, 108202.</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">2021-04-27</span>
+      <p class="news-text"><strong>arXiv preprint.</strong> "Assessment of machine learning methods for state-to-state approaches" — arXiv:2104.01042.</p>
+    </div>
+  </div>
+
+  <div class="affil-strip" style="margin-top: 3.5rem;">
+    <p class="sec-label" style="width:100%; margin-bottom:0.75rem;">Affiliations</p>
+    <span class="affil-chip">University of Melbourne</span>
+    <span class="affil-chip">Saint Petersburg State University</span>
+    <span class="affil-chip">Sapienza University of Rome</span>
+    <span class="affil-chip">Inria Bordeaux</span>
+    <span class="affil-chip">NASA</span>
+  </div>
+</section>
+
+<!-- ── RESEARCH ── -->
+<section id="research">
+  <p class="sec-label">Research</p>
+  <h2 class="sec-title">Projects &amp; Focus Areas</h2>
+  <p class="sec-sub">From kinetic theory and shock-fitting to turbulence modelling and open-source scientific software.</p>
+  <div class="research-grid">
+
+    <div class="card">
+      <span class="card-icon">⚡</span>
+      <h3 class="card-title">Data-Driven Turbulence Modelling</h3>
+      <p class="card-desc">Applying unsupervised ML and Gene Expression Programming (GEP) to improve the generalisability and interpretability of RANS closure models across diverse flow regimes.</p>
+      <span class="card-badge">Current · U. Melbourne</span>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🔥</span>
+      <h3 class="card-title">Hypersonic Non-Equilibrium Flows</h3>
+      <p class="card-desc">Development of numerical methods for high-speed viscous reactive flows in state-to-state (STS) and multi-temperature formulations, with a focus on shock-heated air.</p>
+      <span class="card-badge amber">SPbU</span>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">◈</span>
+      <h3 class="card-title">UnDiFi-2D: Shock-Fitting</h3>
+      <p class="card-desc">Co-developer of an open-source unstructured discontinuity fitting code for 2D grids, enabling sharp shock representation on unstructured meshes without numerical diffusion.</p>
+      <span class="card-badge">Open Source</span>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🧪</span>
+      <h3 class="card-title">KAPPA Library</h3>
+      <p class="card-desc">C++ library implementing kinetic approaches to physical processes in planetary and re-entry atmospheres — transport coefficients, relaxation rates, thermodynamic properties.</p>
+      <span class="card-badge">Published · CPC 2019</span>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🌊</span>
+      <h3 class="card-title">Viscous Fingering</h3>
+      <p class="card-desc">Numerical investigation of the viscous finger instability in porous media using real field data, in collaboration with Gazprom Neft, for enhanced hydrocarbon recovery modelling.</p>
+      <span class="card-badge amber">Applied</span>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🤖</span>
+      <h3 class="card-title">ML for State-to-State Kinetics</h3>
+      <p class="card-desc">Systematic benchmarking of machine learning regression methods — neural networks, GPR, random forests — as surrogates for expensive STS thermochemical relaxation databases.</p>
+      <span class="card-badge">Published · Mathematics 2022</span>
+    </div>
+
+  </div>
+
+  <!-- Teaching -->
+  <div style="margin-top: 4.5rem;">
+    <p class="sec-label">Teaching</p>
+    <h3 class="sec-title" style="font-size: 1.6rem;">Courses</h3>
+    <div class="teaching-grid">
+      <div class="teach-card">
+        <h4>Hypersonics</h4>
+        <span>Sep 2020 – Sep 2022 · SPbU</span>
+      </div>
+      <div class="teach-card">
+        <h4>Machine Learning for Fluid Mechanics</h4>
+        <span>Mar 2021 – Sep 2022 · SPbU</span>
+      </div>
+      <div class="teach-card">
+        <h4>Modern Scientific Visualisation</h4>
+        <span>Mar 2021 – Jun 2021 · SPbU</span>
+      </div>
+      <div class="teach-card">
+        <h4>Scientific Paper Writing</h4>
+        <span>Mar 2021 – Jun 2021 · SPbU</span>
+      </div>
+      <div class="teach-card">
+        <h4>Concepts of Modern Natural Science</h4>
+        <span>Mar 2021 – Jun 2021 · SPbU</span>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Footer -->
-<footer class="text-center" style="margin-top:20px; padding: 20px; background-color: #f8f9fa;">
-  <p>&copy; 2023 Lorenzo Campoli | Template by <a href="https://github.com/mavroudisv/plain-academic">Plain Academic</a></p>
+  <!-- Service -->
+  <div style="margin-top: 4rem;">
+    <p class="sec-label">Service &amp; Outreach</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+      <div class="card" style="padding: 1.25rem 1.5rem;">
+        <p class="card-title" style="font-size: 0.82rem;">Peer Review</p>
+        <p class="card-desc" style="font-size: 0.8rem;">Reviewer for journals in computational fluid dynamics, aeronautics, and applied mathematics.</p>
+      </div>
+      <div class="card" style="padding: 1.25rem 1.5rem;">
+        <p class="card-title" style="font-size: 0.82rem;">Conference Activity</p>
+        <p class="card-desc" style="font-size: 0.8rem;">Regular presentations at RGD, ISSW, ECFD, and other major international symposia.</p>
+      </div>
+      <div class="card" style="padding: 1.25rem 1.5rem;">
+        <p class="card-title" style="font-size: 0.82rem;">Open Source</p>
+        <p class="card-desc" style="font-size: 0.8rem;">Actively maintaining scientific software repositories on GitHub across multiple research domains.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ── -->
+<section id="publications">
+  <p class="sec-label">Publications</p>
+  <h2 class="sec-title">Selected Works</h2>
+  <p class="sec-sub">
+    Full list on <a href="https://scholar.google.com/citations?user=U0x5ykgAAAAJ&hl=en" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Google Scholar</a> · ORCID <a href="https://orcid.org/0000-0002-0510-9422" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">0000-0002-0510-9422</a>
+  </p>
+
+  <div class="pub-list">
+
+    <div class="pub-year-group">
+      <div class="pub-year">2022</div>
+      <div class="pub-entry">
+        <p class="pub-title">Assessment of Machine Learning Methods for State-to-State Approach in Nonequilibrium Flow Simulations</p>
+        <p class="pub-authors">L. Campoli, E. Kustova, P. Maltseva</p>
+        <p class="pub-venue">Mathematics 10(6), 928 (2022)<a class="pub-doi" href="https://doi.org/10.3390/math10060928" target="_blank" rel="noopener">DOI →</a></p>
+      </div>
+    </div>
+
+    <div class="pub-year-group">
+      <div class="pub-year">2021</div>
+      <div class="pub-entry">
+        <p class="pub-title">UnDiFi-2D: An Unstructured Discontinuity Fitting Code for 2D Grids</p>
+        <p class="pub-authors">L. Campoli, A. Assonitis, M. Ciallella, R. Paciorri, A. Bonfiglioli, M. Ricchiuto</p>
+        <p class="pub-venue">Computer Physics Communications 271, 108202 (2021)<a class="pub-doi" href="https://doi.org/10.1016/j.cpc.2021.108202" target="_blank" rel="noopener">DOI →</a></p>
+      </div>
+    </div>
+
+    <div class="pub-year-group">
+      <div class="pub-year">2020</div>
+      <div class="pub-entry">
+        <p class="pub-title">Models Validation and Code Profiling in State-to-State Simulations of Shock Heated Air Flows</p>
+        <p class="pub-authors">L. Campoli, O. Kunova, E. Kustova, M. Melnik</p>
+        <p class="pub-venue">Acta Astronautica 175, 493–509 (2020)<a class="pub-doi" href="https://doi.org/10.1016/j.actaastro.2020.06.008" target="_blank" rel="noopener">DOI →</a></p>
+      </div>
+      <div class="pub-entry">
+        <p class="pub-title">Numerical Investigation of Viscous Fingering Phenomenon for Raw Field Data</p>
+        <p class="pub-authors">F. Bakharev, L. Campoli, A. Enin, S. Matveenko, Y. Petrova, S. Tikhomirov, A. Yakovlev</p>
+        <p class="pub-venue">Transport in Porous Media 132(2), 443–464 (2020)<a class="pub-doi" href="https://doi.org/10.1007/s11242-020-01400-5" target="_blank" rel="noopener">DOI →</a></p>
+      </div>
+    </div>
+
+    <div class="pub-year-group">
+      <div class="pub-year">2019</div>
+      <div class="pub-entry">
+        <p class="pub-title">KAPPA: Kinetic Approach to Physical Processes in Atmospheres Library in C++</p>
+        <p class="pub-authors">L. Campoli, G.P. Oblapenko, E.V. Kustova</p>
+        <p class="pub-venue">Computer Physics Communications 236, 244–267 (2019)<a class="pub-doi" href="https://doi.org/10.1016/j.cpc.2018.10.021" target="_blank" rel="noopener">DOI →</a></p>
+      </div>
+    </div>
+
+    <div class="pub-year-group">
+      <div class="pub-year">2016–2017</div>
+      <div class="pub-entry">
+        <p class="pub-title">Unsteady Shock-Fitting for Unstructured Grids</p>
+        <p class="pub-authors">A. Bonfiglioli, R. Paciorri, L. Campoli</p>
+        <p class="pub-venue">Int. J. Numer. Methods Fluids 81(4), 245–261 (2016)<a class="pub-doi" href="https://doi.org/10.1002/fld.4183" target="_blank" rel="noopener">DOI →</a></p>
+      </div>
+      <div class="pub-entry">
+        <p class="pub-title">Shock-Fitting and Predictor-Corrector Explicit ALE Residual Distribution (Book Chapter)</p>
+        <p class="pub-authors">L. Campoli, P. Quemar, A. Bonfiglioli, M. Ricchiuto</p>
+        <p class="pub-venue">Shock Fitting, pp. 113–129, Springer, Cham (2017)</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <p class="sec-label">Experience</p>
+  <h2 class="sec-title">Career Timeline</h2>
+  <p class="sec-sub">Academic positions, research roles, and collaborations.</p>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <p class="tl-period">Present</p>
+      <p class="tl-role">Research Fellow</p>
+      <p class="tl-org">University of Melbourne, School of Mathematics &amp; Statistics</p>
+      <p class="tl-desc">Data-driven turbulence modelling using unsupervised ML and GEP for RANS closure. Developing interpretable, generalisable models for Reynolds-Averaged Navier–Stokes simulations.</p>
+    </div>
+
+    <div class="tl-item">
+      <p class="tl-period">Jun 2020 – 2023</p>
+      <p class="tl-role">Assistant Professor</p>
+      <p class="tl-org">Saint Petersburg State University, Faculty of Mathematics &amp; Mechanics</p>
+      <p class="tl-desc">Research in computational fluid dynamics and ML for non-equilibrium flows (STS and multi-temperature formulations). Taught five courses including Hypersonics and ML for Fluid Mechanics.</p>
+    </div>
+
+    <div class="tl-item">
+      <p class="tl-period">Nov 2018 – Apr 2020</p>
+      <p class="tl-role">Assistant Researcher</p>
+      <p class="tl-org">Saint Petersburg State University, Faculty of Mathematics &amp; Computer Science</p>
+      <p class="tl-desc">Numerical modelling and investigation of the viscous finger phenomenon and enhanced recovery in porous media, in collaboration with Gazprom Neft.</p>
+    </div>
+
+    <div class="tl-item">
+      <p class="tl-period">Earlier</p>
+      <p class="tl-role">Research Collaborator</p>
+      <p class="tl-org">Sapienza University of Rome · Inria Bordeaux · NASA</p>
+      <p class="tl-desc">Collaborative research on shock-fitting algorithms for unstructured grids and residual distribution schemes, leading to the UnDiFi-2D codebase.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <p class="sec-label">Contact</p>
+  <h2 class="sec-title">Get in Touch</h2>
+  <p class="sec-sub">Open to research collaborations, scientific software questions, and academic enquiries.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item" style="margin-bottom: 2rem;">
+        <span class="contact-label">Primary Email</span>
+        <p class="contact-value"><a href="mailto:delphic.node@proton.me">delphic.node@proton.me</a></p>
+      </div>
+      <div class="contact-item" style="margin-bottom: 2rem;">
+        <span class="contact-label">University Email</span>
+        <p class="contact-value"><a href="mailto:lorenzo.campoli@unimelb.edu.au">lorenzo.campoli@unimelb.edu.au</a></p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <p class="contact-value">University of Melbourne, VIC, Australia</p>
+      </div>
+    </div>
+    <div>
+      <div class="contact-item" style="margin-bottom: 2rem;">
+        <span class="contact-label">GitHub</span>
+        <p class="contact-value"><a href="https://github.com/lkampoli" target="_blank" rel="noopener">github.com/lkampoli</a></p>
+      </div>
+      <div class="contact-item" style="margin-bottom: 2rem;">
+        <span class="contact-label">ORCID</span>
+        <p class="contact-value"><a href="https://orcid.org/0000-0002-0510-9422" target="_blank" rel="noopener">0000-0002-0510-9422</a></p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Google Scholar</span>
+        <p class="contact-value"><a href="https://scholar.google.com/citations?user=U0x5ykgAAAAJ&hl=en" target="_blank" rel="noopener">Profile →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2024 Lorenzo Campoli · Research Fellow, University of Melbourne
+  <span style="margin: 0 0.75rem; color: var(--border-hi);">|</span>
+  Built with care — no frameworks, no trackers
 </footer>
 
+<!-- ── CANVAS BACKGROUND: flow-field ── -->
+<script>
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], frame = 0;
+  const N = 160;
+  const SPEED = 0.4;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function noise(x, y, t) {
+    return (Math.sin(x * 0.008 + t * 0.3) * Math.cos(y * 0.006 - t * 0.2) +
+            Math.sin(x * 0.004 - y * 0.005 + t * 0.15) * 0.5);
+  }
+
+  function init() {
+    particles = [];
+    for (let i = 0; i < N; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        life: Math.random() * 200,
+        maxLife: 180 + Math.random() * 120,
+        speed: SPEED * (0.5 + Math.random()),
+        size: 0.8 + Math.random() * 1.2
+      });
+    }
+  }
+
+  function draw() {
+    frame++;
+    const t = frame * 0.003;
+    ctx.fillStyle = 'rgba(7, 11, 20, 0.18)';
+    ctx.fillRect(0, 0, W, H);
+
+    particles.forEach(p => {
+      const angle = noise(p.x, p.y, t) * Math.PI * 2.5;
+      p.x += Math.cos(angle) * p.speed;
+      p.y += Math.sin(angle) * p.speed;
+      p.life++;
+
+      if (p.life > p.maxLife || p.x < 0 || p.x > W || p.y < 0 || p.y > H) {
+        p.x = Math.random() * W;
+        p.y = Math.random() * H;
+        p.life = 0;
+        p.maxLife = 180 + Math.random() * 120;
+      }
+
+      const alpha = Math.sin((p.life / p.maxLife) * Math.PI) * 0.55;
+      const isBlue = (p.life % 7 < 1);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = isBlue
+        ? `rgba(56, 199, 248, ${alpha * 0.7})`
+        : `rgba(120, 150, 200, ${alpha * 0.4})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize();
+  init();
+  draw();
+})();
+</script>
+
 </body>
-</html>
 </html>
