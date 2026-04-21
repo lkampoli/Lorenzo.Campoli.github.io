@@ -1,39 +1,3 @@
-<!--
-# Lorenzo.Campoli.github.io
-
-Hosting personal webpage
-Hello, my name is Lorenzo Campoli and I'm currently working at [The University of Melbourne](https://eng.unimelb.edu.au/about/departments/school-of-electrical-mechanical-and-infrastructure-engineering) on data driven turbulence modeling.
- 
-# Hi there! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px">
-
-## 🚀 About Me
-
-🎓 I am Lorenzo Campoli.
-
-## 📈 Stats
-
-<div align="center">
-    <img src="https://github-profile-trophy.vercel.app/?username=lkampoli&row=1&column=6&margin-h=8&theme=darkhub&count_private=true&margin-w=15&no-frame=true" alt="profile trophies" />
-    <br />
-    <img src="https://github-readme-stats.vercel.app/api?username=lkampoli&show_icons=true&hide_border=true" alt="Lorenzo Campoli's GitHub Stats">
-    <br />
-    <img src="https://visitor-badge.laobi.icu/badge?page_id=lkampoli.lkampoli" alt="visitors">
-</div>
---> 
-
-<!--
-## 🔗 Links
-
-[![linked-in](https://img.shields.io/badge/Linked_In-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/lorenzo-campoli-325299191/)
-[![github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/lkampoli)
-[![gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=Gmail&logoColor=white)](mailto:campoli.lorenzo@gmail.com)
-
-<!--[![Lorenzo's github stats](https://github-readme-stats.vercel.app/api?username=lkampoli&theme=blue-green)](https://github.com/lkampoli/github-readme-stats)
-
-[![Lorenzo's top languages](https://github-readme-stats.vercel.app/api/top-langs/?username=lkampoli&theme=blue-green)](https://github.com/lkampoli/github-readme-stats)
-
- [![Lorenzo's github streak](https://github-readme-streak-stats.herokuapp.com/?user=lkampoli&theme=blue-green)](https://github.com/lkampoli/github-readme-streak-stats) -->
-
 # Lorenzo Campoli — Personal Academic Website
 
 [![Live Site](https://img.shields.io/badge/site-live-brightgreen?style=flat-square&logo=github)](https://lkampoli.github.io/Lorenzo.Campoli.github.io/)
@@ -47,12 +11,22 @@ Hello, my name is Lorenzo Campoli and I'm currently working at [The University o
 
 ## About
 
-I am a **Research Fellow at the University of Melbourne**, working on data-driven turbulence modelling. My current work focuses on applying unsupervised machine learning and Gene Expression Programming (GEP) to improve the generalisability and interpretability of Reynolds-Averaged Navier–Stokes (RANS) turbulence closure models.
+I am an **Independent Researcher** working on shock-fitting, non-equilibrium
+high-speed flows and plasma physics.
 
-Previously, I was an **Assistant Professor** at the Fluid Mechanics Department, Saint Petersburg State University, where I developed and implemented numerical methods for high-speed non-equilibrium viscous reactive flows in state-to-state (STS) and multi-temperature formulations.
+I was a **Research Fellow at the University of Melbourne**, working on
+data-driven turbulence modelling. My work focused on applying unsupervised
+machine learning and Gene Expression Programming (GEP) to improve the
+generalisability and interpretability of Reynolds-Averaged Navier–Stokes (RANS)
+turbulence closure models.
+
+Previously, I was an **Assistant Professor** at the Fluid Mechanics Department,
+Saint Petersburg State University, where I developed and implemented numerical
+methods for high-speed non-equilibrium viscous reactive flows in state-to-state
+(STS) and multi-temperature formulations.
 
 **Nationality:** Italian · **Born:** April 1986  
-**Contact:** delphic.node@proton.me · lorenzo.campoli@unimelb.edu.au
+**Contact:** delphic.node@proton.me 
 
 ---
 
@@ -84,11 +58,15 @@ Previously, I was an **Assistant Professor** at the Fluid Mechanics Department, 
 
 ### Book Chapters
 
-- Shock-Fitting and Predictor-Corrector Explicit ALE Residual Distribution — **L. Campoli**, P. Quemar, A. Bonfiglioli, M. Ricchiuto. In: *Shock Fitting*, pp. 113–129. Springer, Cham (2017).
+- Shock-Fitting and Predictor-Corrector Explicit ALE Residual Distribution —
+  **L. Campoli**, P. Quemar, A. Bonfiglioli, M. Ricchiuto. In: *Shock Fitting*,
+  pp. 113–129. Springer, Cham (2017).
 
 ### Preprints
 
-- Assessment of Machine Learning Methods for State-to-State Approaches — **L. Campoli**, E. Kustova, P. Maltseva. arXiv:2104.01042 (2021). [[arXiv]](https://arxiv.org/abs/2104.01042)
+- Assessment of Machine Learning Methods for State-to-State Approaches — **L.
+  Campoli**, E. Kustova, P. Maltseva. arXiv:2104.01042 (2021).
+  [[arXiv]](https://arxiv.org/abs/2104.01042)
 
 Full list: [Google Scholar](https://scholar.google.com/citations?user=U0x5ykgAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0002-0510-9422)
 
@@ -152,7 +130,9 @@ Lorenzo.Campoli.github.io/
 
 ## Resources Overview
 
-The [Resources](https://lkampoli.github.io/Lorenzo.Campoli.github.io/resources.html) page curates software across 12 categories relevant to CFD, hypersonics, and scientific ML:
+The [Resources](https://lkampoli.github.io/Lorenzo.Campoli.github.io/resources.html)
+page curates software across 12 categories relevant to CFD, hypersonics, and
+scientific ML:
 
 - **Thermodynamics & Transport** — KAPPA, Cantera, Mutation++, CEA, REFPROP, CoolProp
 - **CFD Solvers (General)** — OpenFOAM, SU2, COOLFluiD, Code_Saturne, MFC, Palabos
